@@ -19,8 +19,6 @@ namespace Lab5_WebDriver
         {
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Manage().Window.Maximize();
-            // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20); 
-
         }
 
         [TearDown]
@@ -63,10 +61,10 @@ namespace Lab5_WebDriver
             var weeks = driver.FindElements(By.ClassName("day_td"));
             foreach (var el in weeks)
             {
-                if (el.GetAttribute("data-month") == "9")
+                if (el.GetAttribute("data-month") == (DateTime.Now.Month-1).ToString())
                 {
                     var link = el.FindElement(By.ClassName("ui-state-default"));
-                    if (link.Text == "20")
+                    if (link.Text == DateTime.Now.Day.ToString())
                     {
                         link.Click();
                         break;
@@ -75,8 +73,8 @@ namespace Lab5_WebDriver
             }
             searchForm.FindElement(By.ClassName("search_button")).Click();
             Thread.Sleep(3000);
-
-            driver.FindElement(By.ClassName("allert-block"));
+            Assert.AreNotEqual(null, driver.FindElement(By.ClassName("allert-block")));
+            
 
         }
     }
