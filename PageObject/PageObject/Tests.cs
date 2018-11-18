@@ -19,8 +19,7 @@ namespace PageObject
         {
             driver = new OpenQA.Selenium.Chrome.ChromeDriver();
             driver.Manage().Window.Maximize();
-            // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20); 
-
+           
         }
 
         [OneTimeTearDown]
@@ -37,16 +36,14 @@ namespace PageObject
             PageFactory.InitElements(driver, searchPage);
 
             searchPage.oneWay.Click();
-
-            IWebElement searchForm = driver.FindElement(By.ClassName("inner-search"));
-
             Thread.Sleep(1000);
-            searchForm = driver.FindElement(By.ClassName("new_search_form"));
+            
             searchPage.departure.Clear();
             searchPage.departure.SendKeys("Лондон");
             Thread.Sleep(1000);
             searchPage.departure.SendKeys(Keys.Enter);
             Thread.Sleep(1000);
+
             searchPage.arrival.Clear();
             searchPage.arrival.SendKeys("Москва");
             Thread.Sleep(1000);
