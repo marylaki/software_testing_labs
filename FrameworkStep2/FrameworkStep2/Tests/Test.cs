@@ -165,12 +165,12 @@ namespace Framework
             DateTime departureDate = DateTime.Now.AddDays(1);
             steps.OpenSearchPage();
             steps.ChooseOneWayTrip();
-            steps.SetFromCityToCity("Рига", "Киев");
+            steps.SetFromCityToCity("Рига", "Москва");
             steps.SetDepartureDate(departureDate);
             steps.OpenPeopleSetting();
             steps.SetAdults(3);
             steps.ClickSearchButton();
-            Assert.IsTrue(steps.IsRightResult("Рига", "Киев", departureDate));
+            Assert.IsTrue(steps.IsRightResult("Рига", "Москва", departureDate));
             steps.ClickAircompanyFilter();
             steps.ChooseAircompany();
             Assert.IsTrue(steps.CheckAircompany());

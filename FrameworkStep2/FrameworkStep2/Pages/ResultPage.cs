@@ -224,7 +224,7 @@ namespace Framework.Pages
         public void ChoseAircompany()
         {
             aircompanyPanel.FindElements(By.TagName("ins"))[1].Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(4000);
         }
         public bool CheckAircompany()
         {
